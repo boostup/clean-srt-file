@@ -1,0 +1,17 @@
+{
+  "name": "clean-srt-file",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "nodemon": "^1.12.5",
+    "replace-in-file": "^3.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "nodemon ./index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Frederic Beauvois <boostup@gmail.com>",
+  "license": "ISC"
+}
