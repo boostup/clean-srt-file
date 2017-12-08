@@ -1,51 +1,11 @@
-const replace = require('replace-in-file');
+const readline = require('readline');
+const cleanSrtFilesAt = require('./cleanSRTFiles.js');
 
-/**
- * Commenting this section as keeping the the time marks is actual useful 
- */
+const ALL_SRT_FILES = '**.srt';
+const dirPath = process.argv[2];
+const removeMarks = process.argv[3] || 'N';
 
-// let changes = replace.sync({
-//     files: ['/Users/boostup/Downloads/**.srt'],
-//     from: /\d\d:\d\d:\d\d.*/g,
-//     to: "",
-// });
-
-//console.log(changes);
-
-changes = replace.sync({
-    files: ['/Users/boostup/Downloads/**.srt'],
-    from: /<font color="#E5E5E5">/g,
-    to: "",
-});
-
-console.log(changes);
-
-changes = replace.sync({
-    files: ['/Users/boostup/Downloads/**.srt'],
-    from: /<font color="#CCCCCC">/g,
-    to: "",
-});
-
-console.log(changes);
-
-changes = replace.sync({
-    files: ['/Users/boostup/Downloads/**.srt'],
-    from: /<\/font>/g,
-    to: "",
-});
-
-console.log(changes);
-
-changes = replace.sync({
-    files: ['/Users/boostup/Downloads/**.srt'],
-    from: /^\d+$/gm,
-    to: "",
-});
-
-changes = replace.sync({
-    files: ['/Users/boostup/Downloads/**.srt'],
-    from: /^\n/gim, 
-    to: "",
-});
-
-console.log(changes);
+cleanSrtFilesAt(
+    `${dirPath}\/${ALL_SRT_FILES}`, 
+    removeMarks === '' || removeMarks.toUpperCase() === 'N' ? false : true
+);
