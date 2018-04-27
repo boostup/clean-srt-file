@@ -4,6 +4,9 @@ module.exports = (files, removeMarks = false) => {
 
     let changes;
 
+    /**
+     * Removing time marks
+     */
     if (removeMarks){
         changes = replace.sync({
             files: files,
@@ -13,6 +16,9 @@ module.exports = (files, removeMarks = false) => {
         console.log(changes);
     }
     
+    /**
+     * STARTING to remove HTML tags
+     */
     changes = replace.sync({
         files: files,
         from: /<font color="#E5E5E5">/g,
@@ -28,12 +34,18 @@ module.exports = (files, removeMarks = false) => {
     console.log(changes);
     
     changes = replace.sync({    
-        files: ['/Users/boostup/Downloads/**.srt'],
+        files: files,
         from: /<\/font>/gm,
         to: "",
     });
     console.log(changes);
+    /**
+     * STOPING to remove HTML tags
+     */    
     
+    /**
+     * ??
+     */
     changes = replace.sync({
         files: files,
         from: /^\d+$/gm,
@@ -41,6 +53,9 @@ module.exports = (files, removeMarks = false) => {
     });
     console.log(changes);
 
+    /**
+     * Removing \n
+     */
     changes = replace.sync({
         files: files,
         from: /^\n/gim,
